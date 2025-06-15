@@ -3,18 +3,28 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            bindings = <&kp>, <&kp>;
+behaviors {
+    hm: homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS";
+        bindings = 
+            <&kp A>, <&kp LEFT_SHIFT>,      // Tap A, hold LEFT_SHIFT
+            <&kp S>, <&kp LEFT_CTRL>,       // Tap S, hold LEFT_CTRL
+            <&kp D>, <&kp LEFT_ALT>,        // Tap D, hold LEFT_ALT
+            <&kp F>, <&kp LEFT_GUI>,        // Tap F, hold LEFT_GUI
 
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <125>;
-            flavor = "tap-preferred";
-        };
+            <&kp J>, <&kp RIGHT_GUI>,      // Tap J, hold RIGHT_GUI
+            <&kp K>, <&kp RIGHT_ALT>,      // Tap K, hold RIGHT_ALT
+            <&kp L>, <&kp RIGHT_CTRL>,     // Tap L, hold RIGHT_CTRL
+            <&kp SEMICOLON>, <&kp RIGHT_SHIFT>;  // Tap ;, hold RIGHT_SHIFT
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        quick-tap-ms = <200>;
+        require-prior-idle-ms = <125>;
+        flavor = "tap-preferred";
+    };
+};
     };
 
     macros {
