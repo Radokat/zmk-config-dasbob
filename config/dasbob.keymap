@@ -4,7 +4,7 @@
 
 / {
     behaviors {
-        hm_gui_l: {
+        hm_gui_l: hm_gui_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_GUI_L";
             bindings = <&kp LEFT_GUI>, <&kp>;
@@ -15,7 +15,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_alt_l: {
+        hm_alt_l: hm_alt_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_ALT_L";
             bindings = <&kp LEFT_ALT>, <&kp>;
@@ -26,7 +26,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_ctrl_l: {
+        hm_ctrl_l: hm_ctrl_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_CTRL_L";
             bindings = <&kp LCTRL>, <&kp>;
@@ -37,7 +37,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_shift_l: {
+        hm_shift_l: hm_shift_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_SHIFT_L";
             bindings = <&kp LEFT_SHIFT>, <&kp>;
@@ -48,7 +48,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_shift_r: {
+        hm_shift_r: hm_shift_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_SHIFT_R";
             bindings = <&kp RIGHT_SHIFT>, <&kp>;
@@ -59,7 +59,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_ctrl_r: {
+        hm_ctrl_r: hm_ctrl_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_CTRL_R";
             bindings = <&kp RIGHT_CONTROL>, <&kp>;
@@ -70,7 +70,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_alt_r: {
+        hm_alt_r: hm_alt_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_ALT_R";
             bindings = <&kp RIGHT_ALT>, <&kp>;
@@ -81,7 +81,7 @@
             require-prior-idle-ms = <125>;
         };
 
-        hm_gui_r: {
+        hm_gui_r: hm_gui_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_GUI_R";
             bindings = <&kp RIGHT_GUI>, <&kp>;
@@ -121,10 +121,10 @@
 
         Base {
             bindings = <
-&kp Q           &kp W             &kp E           &kp R             &kp T    &kp Y          &kp U             &kp I            &kp O               &kp P
-&hm_gui_l A     &hm_alt_l S       &hm_ctrl_l D    &hm_shift_l F     &kp G    &kp H          &hm_shift_r J     &hm_ctrl_r K     &hm_alt_r L         &hm_gui_r SINGLE_QUOTE
-&kp Z           &hm_alt_r X       &kp C           &kp V             &kp B    &kp N          &kp M             &kp COMMA        &hm_alt_r PERIOD    &kp SLASH
-                             &lt 1 ESCAPE  &lt 2 SPACE  &kp TAB  &lt 4 ENTER  &lt 5 BACKSPACE  &lt 6 DELETE
+&kp Q            &kp W            &kp E             &kp R             &kp T    &kp Y          &kp U              &kp I              &kp O               &kp P
+&hm_gui_l A      &hm_alt_l S      &hm_ctrl_l D      &hm_shift_l F     &kp G    &kp H          &hm_shift_r J      &hm_ctrl_r K       &hm_alt_r L         &hm_gui_r SINGLE_QUOTE
+&kp Z            &hm_alt_r X      &kp C             &kp V             &kp B    &kp N          &kp M              &kp COMMA          &hm_alt_r PERIOD    &kp SLASH
+                                 &lt 1 ESCAPE      &lt 2 SPACE       &kp TAB       &lt 4 ENTER      &lt 5 BACKSPACE     &lt 6 DELETE
             >;
         };
 
@@ -168,16 +168,28 @@
             bindings = <
 &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET  &none  &none            &none      &none          &none
 &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL          &none  &kp RIGHT_SHIFT  &kp RCTRL  &kp LEFT_ALT   &kp RIGHT_GUI
+&kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &none  &none           
 &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &none  &none            &none      &kp RIGHT_ALT  &none
                                 &kp DOT       &kp NUMBER_0  &kp MINUS          &none  &none            &none
             >;
         };
 
-layer_6 {
-    bindings = <
+        layer_6 {
+            bindings = <
 &kp F12  &kp F7  &kp F8  &kp F9     &kp PRINTSCREEN  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2       &bt BT_SEL 3   &bt BT_SEL 4
 &kp F11  &kp F4  &kp F5  &kp F6     &kp SCROLLLOCK   &bt BT_CLR    &kp RIGHT_SHIFT  &kp RIGHT_CONTROL  &kp LEFT_ALT   &kp RIGHT_WIN
 &kp F10  &kp F1  &kp F2  &kp F3     &kp PAUSE_BREAK  &none         &none            &none              &kp RIGHT_ALT  &bt BT_CLR_ALL
                  &snip   &kp SPACE  &kp TAB          &none         &none            &none
-    >;
+            >;
+        };
+
+        layer_7 {
+            bindings = <
+&kp Q  &kp W  &kp E    &kp R      &kp T    &kp Y      &kp U          &kp I      &kp O       &kp P
+&kp A  &kp S  &kp D    &kp F      &kp G    &kp H      &kp J          &kp K      &kp L       &kp SINGLE_QUOTE
+&kp Z  &kp X  &kp C    &kp V      &kp B    &kp N      &kp M          &kp COMMA  &kp PERIOD  &kp SLASH
+              &kp ESC  &kp SPACE  &kp TAB  &kp ENTER  &kp BACKSPACE  &to 0
+            >;
+        };
+    };
 };
