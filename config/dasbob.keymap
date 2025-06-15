@@ -2,165 +2,75 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
-&behavior {
-    // Left hand modifier behavior
-    left_shift: left_shift {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LEFT_SHIFT_MOD";
-        bindings = <&kp>, <&kp LEFT_SHIFT>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
+/ {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+            flavor = "tap-preferred";
+        };
     };
 
-    left_ctrl: left_ctrl {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LEFT_CTRL_MOD";
-        bindings = <&kp>, <&kp LEFT_CTRL>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
+    macros {
+        repeat: repeat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp NUMBER_2 &kp NUMBER_4 &kp NUMBER_2 &kp NUMBER_4 &kp NUMBER_2 &kp NUMBER_4>;
+            label = "REPEAT";
+        };
+
+        snip: snip {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LSHFT &kp LEFT_GUI &kp S>;
+            label = "SNIP";
+        };
+
+        lock: lock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_GUI &kp L>;
+            label = "LOCK";
+        };
     };
 
-    left_alt: left_alt {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LEFT_ALT_MOD";
-        bindings = <&kp>, <&kp LEFT_ALT>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
+    keymap {
+        compatible = "zmk,keymap";
 
-    left_gui: left_gui {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LEFT_GUI_MOD";
-        bindings = <&kp>, <&kp LEFT_GUI>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
+        // This is a sample keymap intended to be replaced with your own
 
-    // Right hand modifier behavior
-    right_shift: right_shift {
-        compatible = "zmk,behavior-hold-tap";
-        label = "RIGHT_SHIFT_MOD";
-        bindings = <&kp>, <&kp RIGHT_SHIFT>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
+        Base {
+            bindings = <
+&kp Q           &kp W            &kp E         &kp R             &kp T    &kp Y        &kp U            &kp I         &kp O                 &kp P
+&hm LEFT_WIN A  &hm LEFT_ALT S   &hm LCTRL D   &hm LEFT_SHIFT F  &kp G    &kp H        &hm LSHFT J      &hm RCTRL K   &hm LEFT_ALT L        &hm RIGHT_GUI SINGLE_QUOTE
+&kp Z           &hm RIGHT_ALT X  &kp C         &kp V             &kp B    &kp N        &kp M            &kp COMMA     &hm RIGHT_ALT PERIOD  &kp SLASH
+                                 &lt 1 ESCAPE  &lt 2 SPACE       &kp TAB  &lt 4 ENTER  &lt 5 BACKSPACE  &lt 6 DELETE
+            >;
+        };
 
-    right_ctrl: right_ctrl {
-        compatible = "zmk,behavior-hold-tap";
-        label = "RIGHT_CTRL_MOD";
-        bindings = <&kp>, <&kp RIGHT_CTRL>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
+        layer_1 {
+            bindings = <
+&to 7  &none  &none  &none  &none  &none       &none             &none              &none            &none
+&none  &none  &none  &none  &none  &none       &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT
+&none  &none  &none  &none  &none  &none       &none             &none              &none            &none
+              &none  &none  &none  &kp C_STOP  &kp C_PLAY_PAUSE  &kp C_MUTE
+            >;
+        };
 
-    right_alt: right_alt {
-        compatible = "zmk,behavior-hold-tap";
-        label = "RIGHT_ALT_MOD";
-        bindings = <&kp>, <&kp RIGHT_ALT>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
-
-    right_gui: right_gui {
-        compatible = "zmk,behavior-hold-tap";
-        label = "RIGHT_GUI_MOD";
-        bindings = <&kp>, <&kp RIGHT_GUI>;
-        #binding-cells = <2>;
-        tapping-term-ms = <220>;
-        quick-tap-ms = <150>;
-        require-prior-idle-ms = <0>;
-        release-after-ms = <0>;
-        flavor = "balanced";
-    };
-};
-
-macros {
-    repeat: repeat {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings = <&kp NUMBER_2 &kp NUMBER_4 &kp NUMBER_2 &kp NUMBER_4 &kp NUMBER_2 &kp NUMBER_4>;
-        label = "REPEAT";
-    };
-
-    snip: snip {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings = <&kp LSHFT &kp LEFT_GUI &kp S>;
-        label = "SNIP";
-    };
-
-    lock: lock {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings = <&kp LEFT_GUI &kp L>;
-        label = "LOCK";
-    };
-};
-
-keymap {
-    compatible = "zmk,keymap";
-
-    // Base Layer
-    Base {
-        bindings = <&kp Q           &kp W            &kp E         &kp R             &kp T    &kp Y
-                    &kp U            &kp I            &kp O                 &kp P
-                    &hm LEFT_WIN A   &left_shift S   &left_ctrl D   &left_alt F  &kp G    &kp H
-                    &hm LEFT_SHIFT J &right_ctrl K   &right_alt L        &right_gui SINGLE_QUOTE
-                    &kp Z           &hm RIGHT_ALT X  &kp C         &kp V             &kp B    &kp N
-                    &kp M            &kp COMMA        &hm RIGHT_ALT PERIOD  &kp SLASH
-                    &lt 1 ESCAPE     &lt 2 SPACE       &kp TAB  &lt 4 ENTER  &lt 5 BACKSPACE  &lt 6 DELETE>;
-    };
-
-    // Layer 1 (Media Controls)
-    layer_1 {
-        bindings = <
-            &to 7  &none  &none  &none  &none  &none
-            &none  &none  &none  &none  &none  &none
-            &none  &none  &none  &none  &none  &none
-            &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT
-            &none  &none  &none  &none  &none  &none
-            &none  &none  &none  &kp C_STOP  &kp C_PLAY_PAUSE  &kp C_MUTE>;
-    };
-
-    // Layer 2 (Text Selection)
-    layer_2 {
-        bindings = <
-            &none         &none          &none      &none           &none  &kp LC(Z)
-            &kp LC(V)     &kp LC(C)       &kp LC(X)     &kp LC(Y)
-            &kp LEFT_GUI  &kp LEFT_ALT   &kp LCTRL  &kp LEFT_SHIFT
-            &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW &none
-            &none         &kp RIGHT_ALT  &none      &none           &none  &kp INSERT
-            &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END
-            &none      &none           &none  &kp ENTER   &kp BACKSPACE   &kp DELETE>;
-    };
+        layer_2 {
+            bindings = <
+&none         &none          &none      &none           &none  &kp LC(Z)   &kp LC(V)       &kp LC(C)       &kp LC(X)     &kp LC(Y)
+&kp LEFT_GUI  &kp LEFT_ALT   &kp LCTRL  &kp LEFT_SHIFT  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW &none
+&none         &kp RIGHT_ALT  &none      &none           &none  &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END
+                             &none      &none           &none  &kp ENTER   &kp BACKSPACE   &kp DELETE
+            >;
+        };
 
         layer_3 {
             bindings = <
@@ -198,12 +108,13 @@ keymap {
             >;
         };
 
-    // Layer 7 (default layer)
-    layer_7 {
-        bindings = <
-            &kp Q  &kp W  &kp E    &kp R      &kp T    &kp Y      &kp U          &kp I      &kp O       &kp P
-            &kp A  &kp S  &kp D    &kp F      &kp G    &kp H      &kp J          &kp K      &kp L       &kp SINGLE_QUOTE
-            &kp Z  &kp X  &kp C    &kp V      &kp B    &kp N      &kp M          &kp COMMA  &kp PERIOD  &kp SLASH
-            &kp ESC  &kp SPACE  &kp TAB  &kp ENTER  &kp BACKSPACE  &to 0>;
+        layer_7 {
+            bindings = <
+&kp Q  &kp W  &kp E    &kp R      &kp T    &kp Y      &kp U          &kp I      &kp O       &kp P
+&kp A  &kp S  &kp D    &kp F      &kp G    &kp H      &kp J          &kp K      &kp L       &kp SINGLE_QUOTE
+&kp Z  &kp X  &kp C    &kp V      &kp B    &kp N      &kp M          &kp COMMA  &kp PERIOD  &kp SLASH
+              &kp ESC  &kp SPACE  &kp TAB  &kp ENTER  &kp BACKSPACE  &to 0
+            >;
+        };
     };
 };
