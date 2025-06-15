@@ -7,7 +7,7 @@
         hm_gui_l: hm_gui_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_GUI_L";
-            bindings = <&kp LEFT_GUI>, <&kp>;
+            bindings = <&kp LEFT_GUI &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -18,7 +18,7 @@
         hm_alt_l: hm_alt_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_ALT_L";
-            bindings = <&kp LEFT_ALT>, <&kp>;
+            bindings = <&kp LEFT_ALT &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -29,7 +29,7 @@
         hm_ctrl_l: hm_ctrl_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_CTRL_L";
-            bindings = <&kp LCTRL>, <&kp>;
+            bindings = <&kp LCTRL &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -40,7 +40,7 @@
         hm_shift_l: hm_shift_l {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_SHIFT_L";
-            bindings = <&kp LEFT_SHIFT>, <&kp>;
+            bindings = <&kp LEFT_SHIFT &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -51,7 +51,7 @@
         hm_shift_r: hm_shift_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_SHIFT_R";
-            bindings = <&kp RIGHT_SHIFT>, <&kp>;
+            bindings = <&kp RIGHT_SHIFT &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -62,7 +62,7 @@
         hm_ctrl_r: hm_ctrl_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_CTRL_R";
-            bindings = <&kp RIGHT_CONTROL>, <&kp>;
+            bindings = <&kp RIGHT_CONTROL &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -73,7 +73,7 @@
         hm_alt_r: hm_alt_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_ALT_R";
-            bindings = <&kp RIGHT_ALT>, <&kp>;
+            bindings = <&kp RIGHT_ALT &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -84,7 +84,7 @@
         hm_gui_r: hm_gui_r {
             compatible = "zmk,behavior-hold-tap";
             label = "HM_GUI_R";
-            bindings = <&kp RIGHT_GUI>, <&kp>;
+            bindings = <&kp RIGHT_GUI &kp>;
             #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -115,7 +115,6 @@
             label = "LOCK";
         };
     };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -168,7 +167,6 @@
             bindings = <
 &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET  &none  &none            &none      &none          &none
 &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL          &none  &kp RIGHT_SHIFT  &kp RCTRL  &kp LEFT_ALT   &kp RIGHT_GUI
-&kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &none  &none           
 &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &none  &none            &none      &kp RIGHT_ALT  &none
                                 &kp DOT       &kp NUMBER_0  &kp MINUS          &none  &none            &none
             >;
